@@ -78,6 +78,7 @@ jobs:
       with:
         subject-name: ${{ env.SERVER_IMAGE }}
         subject-digest: ${{ steps.build-server.outputs.digest }}
+        predicate-type: https://slsa.dev/provenance/v1
         push-to-registry: true
 
     - name: Attest client image
@@ -85,6 +86,7 @@ jobs:
       with:
         subject-name: ${{ env.CLIENT_IMAGE }}
         subject-digest: ${{ steps.build-client.outputs.digest }}
+        predicate-type: https://slsa.dev/provenance/v1
         push-to-registry: true
 
     - name: Verify image provenance
